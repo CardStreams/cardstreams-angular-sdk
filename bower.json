@@ -1,0 +1,25 @@
+{
+  "name": "ls-angular-sdk",
+  "main": "ls-angular-sdk.js",
+  "version": "0.0.1",
+  "authors": [
+    "Lifestreams Technologies Corporation"
+  ],
+  "description": "Angular SDK provides set of methods and properties to store, manage and retrieve cards in an activity stream/timeline via Lifestreams Technologies Corporation's RESTful API.",
+  "keywords": [
+    "card",
+    "cards",
+    "order",
+    "feed",
+    "activity",
+    "stream"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*"
+  ],
+  "homepage": "https://github.com/Lifestreams/ls-angular-sdk",
+  "dependencies": {
+    "angular": "~1.3.11"
+  }
+}
