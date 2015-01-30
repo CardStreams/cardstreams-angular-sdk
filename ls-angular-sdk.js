@@ -9,6 +9,17 @@
       var app_token, app_id, app_key, api_url, socket_url;
 
       return {
+        /**
+         * Method that initialises the SDK setting the configuration object and sets HTTP headers
+         * @param options {Object} Configuration object, which accepts following properties:
+         *   app_token {String} An authentication token (required if app_id and app_key not present)
+         *   app_id {String} An API ID (required if app_token not present)
+         *   app_key {String} An API Key (required if app_token not present)
+         *   api_url {String} API URL (optional)
+         *   socket_url {String} Socket URL (optional)
+         *
+         * @throws {Error} When any of required config properties is not provided
+         */
         init: function(options) {
 
           if (options.app_token) {
@@ -61,6 +72,10 @@
 
         deleteTimeline: function(timelineId) {
           return $http.delete(api_url + "/timelines/" + timelineId);
+        },
+
+        updateTimeline: function(timelineId, timelineObj) {
+          return $http.patch(api_url + "/timelines/" + timelineId, timelineObj);
         },
 
         getCards: function(timelineId, count, direction, query) {
