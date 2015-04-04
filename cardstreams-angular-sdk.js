@@ -1,10 +1,10 @@
 (function() {
   "use strict";
 
-  var component = angular.module("ls.lsAngularSDK", []);
+  var component = angular.module("cs.CardStreamsSDK", []);
 
   component
-    .factory("lsAngularSDKFactory", function($http, $q) {
+    .factory("CardStreamsSDKFactory", function($http, $q) {
 
       var app_token, app_id, app_key, api_url, socket_url;
 
@@ -38,8 +38,8 @@
             }
           }
 
-          api_url = options.api_url || "https://api.lifestreams.com/beta1";
-          socket_url = options.socket_url || "https://api.lifestreams.com:5500";
+          api_url = options.api_url || "https://api.cardstreams.io";
+          socket_url = options.socket_url || "https://api.cardstreams.io:5500";
 
           if (app_token) {
             $http.defaults.headers.common["Authorization"] = "bearer " + app_token
@@ -49,15 +49,15 @@
           }
         },
 
-        getAllTimelines: function() {
-          return $http.get(api_url + "/timelines");
+        getAllStreams: function() {
+          return $http.get(api_url + "/streams");
         },
 
-        getTimelineInfo: function(timelineId) {
-          return $http.get(api_url + "/timelines/" + timelineId);
+        getStreamInfo: function(streamId) {
+          return $http.get(api_url + "/streams/" + streamId);
         },
 
-        createTimeline: function(name, description) {
+        createStream: function(name, description) {
           var data;
 
           description = description || "";
@@ -70,16 +70,16 @@
           return $http.post(api_url + "/timelines", data);
         },
 
-        deleteTimeline: function(timelineId) {
-          return $http.delete(api_url + "/timelines/" + timelineId);
+        deleteStream: function(streamId) {
+          return $http.delete(api_url + "/timelines/" + streamId);
         },
 
-        updateTimeline: function(timelineId, timelineObj) {
-          return $http.patch(api_url + "/timelines/" + timelineId, timelineObj);
+        updateStream: function(streamId, timelineObj) {
+          return $http.patch(api_url + "/timelines/" + streamId, timelineObj);
         },
 
-        getCards: function(timelineId, count, direction, query) {
-          var endpoint = "/timelines/" + timelineId + "/cards?ts=" + Date.now();
+        getCards: function(streamId, count, direction, query) {
+          var endpoint = "/timelines/" + streamId + "/cards?ts=" + Date.now();
 
           if (count) {
             endpoint += "&limit=" + count;
@@ -97,40 +97,40 @@
 
         },
 
-        createCard: function(timelineId, cardObj) {
-          return $http.post(api_url + "/timelines/" + timelineId + "/cards", cardObj);
+        createCard: function(streamId, cardObj) {
+          return $http.post(api_url + "/timelines/" + streamId + "/cards", cardObj);
         },
 
-        getCard: function(timelineId, cardId) {
-          return $http.get(api_url + "/timelines/" + timelineId + "/cards/" + cardId);
+        getCard: function(streamId, cardId) {
+          return $http.get(api_url + "/timelines/" + streamId + "/cards/" + cardId);
         },
 
-        updateCard: function(timelineId, cardId, cardObj) {
-          return $http.patch(api_url + "/timelines/" + timelineId + "/cards/"  + cardId, cardObj);
+        updateCard: function(streamId, cardId, cardObj) {
+          return $http.patch(api_url + "/timelines/" + streamId + "/cards/"  + cardId, cardObj);
         },
 
-        deleteCard: function(timelineId, cardId) {
-          return $http.delete(api_url + "/timelines/" + timelineId + "/cards/"  + cardId);
+        deleteCard: function(streamId, cardId) {
+          return $http.delete(api_url + "/timelines/" + streamId + "/cards/"  + cardId);
         },
 
-        addAttachment: function(timelineId, cardId, attachmentObj) {
-          return $http.post(api_url + "/timelines/" + timelineId + "/cards/"  + cardId + "/attachments", attachmentObj);
+        addAttachment: function(streamId, cardId, attachmentObj) {
+          return $http.post(api_url + "/timelines/" + streamId + "/cards/"  + cardId + "/attachments", attachmentObj);
         },
 
-        deleteAttachment: function(timelineId, cardId, attachmentId) {
-          return $http.delete(api_url + "/timelines/" + timelineId + "/cards/"  + cardId + "/attachments/" + attachmentId);
+        deleteAttachment: function(streamId, cardId, attachmentId) {
+          return $http.delete(api_url + "/timelines/" + streamId + "/cards/"  + cardId + "/attachments/" + attachmentId);
         },
 
-        getCardComments: function(timelineId, cardId) {
-          return $http.get(api_url + "/timelines/" + timelineId + "/cards/" + cardId + "/comments");
+        getCardComments: function(streamId, cardId) {
+          return $http.get(api_url + "/timelines/" + streamId + "/cards/" + cardId + "/comments");
         },
 
-        postComment: function(timelineId, cardId, commentObj) {
-          return $http.post(api_url + "/timelines/" + timelineId + "/cards/" + cardId + "/comments", commentObj);
+        postComment: function(streamId, cardId, commentObj) {
+          return $http.post(api_url + "/timelines/" + streamId + "/cards/" + cardId + "/comments", commentObj);
         },
 
-        deleteComment: function(timelineId, cardId, commentId) {
-          return $http.delete(api_url + "/timelines/" + timelineId + "/cards/" + cardId + "/comments/" + commentId);
+        deleteComment: function(streamId, cardId, commentId) {
+          return $http.delete(api_url + "/timelines/" + streamId + "/cards/" + cardId + "/comments/" + commentId);
         },
 
         getEventsToken: function() {
