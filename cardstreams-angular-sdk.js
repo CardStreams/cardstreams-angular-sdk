@@ -26,7 +26,7 @@
             app_token = options.app_token;
           } else {
             if (!options.app_id) {
-              throw new Error(CardStreams Angular SDK: app_id is not provided.");
+              throw new Error("CardStreams Angular SDK: app_id is not provided.");
             } else {
               app_id = options.app_id;
             }
