@@ -26,7 +26,7 @@
             app_token = options.app_token;
           } else {
             if (!options.app_id) {
-              throw new Error(CardStreams Angular SDK: app_id is not provided.");
+              throw new Error("CardStreams Angular SDK: app_id is not provided.");
             } else {
               app_id = options.app_id;
             }
@@ -38,7 +38,7 @@
             }
           }
 
-          api_url = options.api_url || "https://api.cardstreams.io";
+          api_url = options.api_url || "https://api.cardstreams.io/v1";
           socket_url = options.socket_url || "https://api.cardstreams.io:5500";
 
           if (app_token) {
