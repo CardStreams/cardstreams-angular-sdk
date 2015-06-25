@@ -11,7 +11,7 @@ Installation
 -------------
 The SDK is packaged as a bower component. To install it in your project simply run
 ```sh
-bower install ls-angular-sdk
+bower install cs-angular-sdk
 ```
 
 and the package as a module dependency to your application, for example by including it in your index file:
@@ -40,8 +40,8 @@ There are times when a securely authenticated implementation is not required, fo
 
 ```javascript
 CardStreamsSDKFactory.init({
-  app_id: "YOUR_3SCALE_APP_ID",
-  app_key: "YOUR_3SCALE_APP_KEY"
+  app_id: "YOUR_CARDSTREAMS_ID",
+  app_key: "YOUR_CARDSTREAMS_KEY"
 });
 ```
 

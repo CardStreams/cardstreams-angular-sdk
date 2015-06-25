@@ -3,8 +3,7 @@
 
   var component = angular.module("cs.CardStreamsSDK", []);
 
-  component
-    .factory("CardStreamsSDKFactory", function($http, $q) {
+  component.factory("CardStreamsSDKFactory", function($http, $q) {
 
       var app_token, app_id, app_key, api_url, socket_url;
 
@@ -44,8 +43,8 @@
           if (app_token) {
             $http.defaults.headers.common["Authorization"] = "bearer " + app_token
           } else {
-            $http.defaults.headers.common["X-Lifestreams-3scale-AppId"] = app_id;
-            $http.defaults.headers.common["X-Lifestreams-3scale-AppKey"] = app_key;
+            $http.defaults.headers.common["X-CardStreams-AppId"] = app_id;
+            $http.defaults.headers.common["X-CardStreams-AppKey"] = app_key;
           }
         },
 
